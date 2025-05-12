@@ -173,5 +173,5 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# Netflix Top10 movies file
-netflix-current-top-10.txt
+# Netflix Top10 movie file
+netflix*.txt

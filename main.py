@@ -4,6 +4,7 @@ A web scraper that captures Netflix's top 10 most viewed movies globally for the
 
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 NETFLIX_URL = "https://www.netflix.com/tudum/top10"
 
@@ -16,7 +17,11 @@ current_top_movies = soup.select("tbody tr")
 # template to maintain column widths
 TEMPLATE = "{0:<6}|{1:<30}|{2:<7}|{3:<15}|{4:<9}|{5}\n"
 
-with open("netflix-current-top-10.txt", "w") as netflix_file:
+# create filename and append timestamp
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+filename = f"netflix-current-top-10_{timestamp}.txt"
+
+with open(filename, "w") as netflix_file:
     # write column headers
     netflix_file.write(
         TEMPLATE.format("Rank", "Title", "Weeks", "Views", "Runtime", "Hours Viewed")
